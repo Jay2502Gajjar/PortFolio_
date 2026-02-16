@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 
-import Navbar from "./components/navbar";
 import BackgroundVideo from "./components/BackgroundVideo";
 import Hero from "./components/h";
 import About from "./components/About";
 import Player from "./components/player";
 import PingPong from "./components/PingPong";
 import IntroOverlay from "./components/IntroOverlay";
+import MainMenu from "./components/MainMenu";
 
 import TypingTest from "./components/TypingTest";
 
@@ -20,7 +20,7 @@ function App() {
   const [bgVideo, setBgVideo] = useState("/video/bg.mp4");
   const [showAbout, setShowAbout] = useState(false);
   const [introDone, setIntroDone] = useState(false);
-  const [userName, setUserName] = useState("");
+  
 
   
 
@@ -29,18 +29,18 @@ function App() {
     {/* INTRO OVERLAY */}
     {!introDone && (
       <IntroOverlay
-        onFinish={(name) => {
-          setUserName(name);
-          setIntroDone(true);
-        }}
-      />
+  onFinish={() => {
+    setIntroDone(true);
+  }}
+/>
+
     )}
 
     {/* MAIN SITE */}
     {introDone && (
       <>
         {/* Floating pill navbar */}
-        <Navbar />
+       
 
         {/* Background video */}
         <BackgroundVideo video={bgVideo} />
@@ -50,20 +50,26 @@ function App() {
 
           {/* HERO SECTION */}
           <section id="home" className="hero-section">
-            <div className="mini-games">
-              <PingPong />
-              <TypingTest />
-            </div>
 
-            <Hero
-              setBgVideo={setBgVideo}
-              onDone={() => setShowAbout(true)}
-              
-            />
+  <div className="left-panel">
+    <div className="mini-games">
+      <PingPong />
+      <TypingTest />
+    </div>
 
-            <About show={showAbout} />
-            <Player />
-          </section>
+    <MainMenu />
+  </div>
+
+  <Hero
+    setBgVideo={setBgVideo}
+    onDone={() => setShowAbout(true)}
+  />
+
+  <About show={showAbout} />
+  <Player />
+
+</section>
+
 
           {/* STACK */}
           <section id="stack">

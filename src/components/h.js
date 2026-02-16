@@ -4,7 +4,7 @@ import SocialIcons from "./SocialIcons";
 
 function Hero({ setBgVideo, onDone}) {
   
-  const fullText = "Hi, I’m Jay";
+  const fullText = "  I’m Jay";
   const [count, setCount] = useState(0);
   const [showSubtitle, setShowSubtitle] = useState(false);
 
